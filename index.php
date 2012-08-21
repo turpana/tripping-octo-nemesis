@@ -3,6 +3,8 @@
 <html>
   <head>
     <title>Hello</title>
+    <script type="text/javascript" src="js/lib/jquery-1.8.0.min.js"></script>
+    <script type="text/javascript" src="js/tripping-octo-nemesis.js"></script>
   </head>
   <body>
     <div id="fb-root"></div>
@@ -15,9 +17,7 @@
           cookie : true,
           xfbml : true
         });
-        FB.getLoginStatus(function(response) {
-          console.log(response);
-        }
+        trippingOctoNemeses = new TrippingOctoNemesis (FB, jQuery);
       };
       // Load the SDK Asynchronously
       (function (d) {
@@ -29,6 +29,6 @@
       }(document));
     </script>
 
-    <p>hello</p>
+    <a href="#" id="fb-trigger">start</a>
   </body>
 </html>
