@@ -15,15 +15,8 @@
           cookie : true,
           xfbml : true
         });
-        FB.login(function(response) {
-          if (response.authResponse) {
-            console.log('Fetching info...');
-            FB.api('/me', function(response) {
-              console.log(response);
-            });
-          } else {
-            console.log('cancelled or not authorized');
-          }
+        FB.api('/me', function(response) {
+          console.log(response);
         });
       };
       // Load the SDK Asynchronously
