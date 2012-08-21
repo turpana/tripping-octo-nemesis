@@ -10,12 +10,12 @@
       window.fbAsyncInit = function() {
         FB.init({
           appId : '<?php echo APPID; ?>',
-          channelUrl : 'app.turpana.com/channel.html',
+          channelUrl : '//app.turpana.com/channel.html',
           status : true,
           cookie : true,
           xfbml : true
         });
-      }
+      };
       // Load the SDK Asynchronously
       (function (d) {
         var js, id = 'facebook-jssdk', ref = d.getElementsByTagName ('script')[0];
