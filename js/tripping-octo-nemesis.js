@@ -10,7 +10,7 @@ TrippingOctoNemesis = (function() {
   // Return constructor
   return function ($, FB) {
     // Private attrs
-    var uid, accessToken;
+    var uid, accessToken, loginStatus;
 
     // Constructor code
     FB.getLoginStatus(function(response) {
@@ -19,24 +19,31 @@ TrippingOctoNemesis = (function() {
         accessToken = response.authResponse.accessToken;
         FB.api('/me', function(response) {console.info(response);});
       } else (response.status === 'not_authorized') {
-        $('#fb-trigger').click(function() {
-          FB.login(function(response) {
-            if (response.authResponse) {
-              console.log('fetching info ...');
-              FB.api('/me', function (response) {
-                console.log(response);
-              });
-            } else {
-              console.log('login unsuccessful');
+        loginStatus = response.status;
+      }
+    });
+    console.log(loginStatus);
+    if (loginStatus != 'connected') {
+      $('#fb-trigger').click(
+        function() {
+          FB.login(
+            function(response) {
+              if (response.authResponse) {
+                console.log('fetching info ...');
+                FB.api('/me', function (response) {
+                  console.log(response);
+                });
+              } else {
+                console.log('login unsuccessful');
+              }
+            }, 
+            {
+              scope: 'email,user_likes'
             }
-          });
-          return false;
-        });
-        // the user is logged in to Facebook, 
-        // but has not authenticated your app
-      } else { // the user isn't logged in to Facebook.  }
-     });
-
+          );
+        return false;
+      });
+    }
   }
 })();
 
