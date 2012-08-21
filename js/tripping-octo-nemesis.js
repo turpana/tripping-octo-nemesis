@@ -11,19 +11,9 @@ TrippingOctoNemesis = (function() {
   return function ($, FB) {
     // Private attrs
     var uid, accessToken, loginStatus;
-
-    // Constructor code
-    FB.getLoginStatus(function(response) {
-      if (response.status === 'connected') {
-        uid = response.authResponse.userID;
-        accessToken = response.authResponse.accessToken;
-        FB.api('/me', function(response) {console.info(response);});
-      } else (response.status === 'not_authorized') {
-        loginStatus = response.status;
-      }
-    });
-    console.log(loginStatus);
-    if (loginStatus != 'connected') {
+    // Private method
+    function loadLoginTrigger() {
+      $('#fb-trigger').html('login');
       $('#fb-trigger').click(
         function() {
           FB.login(
@@ -44,6 +34,25 @@ TrippingOctoNemesis = (function() {
         return false;
       });
     }
+
+    function loadApiTrigger() {
+      $('#fb-trigger').html('start');
+      $('#fb-trigger').click(function () {
+        FB.api('/me', function(response) {console.info(response);});
+      });
+    }
+
+    // Constructor code
+    FB.getLoginStatus(function(response) {
+      if (response.status === 'connected') {
+        uid = response.authResponse.userID;
+        accessToken = response.authResponse.accessToken;
+        loadApiTrigger();
+      } else {
+        loginStatus = response.status;
+        loadLoginTrigger();
+      }
+    });
   }
 })();
 

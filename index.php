@@ -29,6 +29,6 @@
       }(document));
     </script>
 
-    <a href="#" id="fb-trigger">start</a>
+    <a href="#" id="fb-trigger">loading ...</a>
   </body>
 </html>
