@@ -17,7 +17,7 @@
           cookie : true,
           xfbml : true
         });
-        trippingOctoNemeses = new TrippingOctoNemesis (FB, jQuery);
+        trippingOctoNemeses = new TrippingOctoNemesis (jQuery, FB);
       };
       // Load the SDK Asynchronously
       (function (d) {
