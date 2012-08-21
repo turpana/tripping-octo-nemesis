@@ -15,6 +15,14 @@
           cookie : true,
           xfbml : true
         });
+        FB.login(function(response) {
+          if (response.authResponse) {
+            console.log('Fetching info...');
+            FB.api('/me', function(response) {
+              console.log(response);
+            });
+          }
+        });
       };
       // Load the SDK Asynchronously
       (function (d) {
