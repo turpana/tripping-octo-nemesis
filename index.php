@@ -21,6 +21,8 @@
             FB.api('/me', function(response) {
               console.log(response);
             });
+          } else {
+            console.log('cancelled or not authorized');
           }
         });
       };
