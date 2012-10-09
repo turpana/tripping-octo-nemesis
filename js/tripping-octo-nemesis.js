@@ -71,6 +71,7 @@ TrippingOctoNemesis = (function() {
 
     // Constructor code
     FB.Event.subscribe('auth.statusChange', function (response) {
+      console.info(response);
       if (response.authResponse) {
         octoNemesisUpdate({loginStatus: true});
       } else {
