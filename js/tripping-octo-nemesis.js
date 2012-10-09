@@ -9,7 +9,7 @@ TrippingOctoNemesis = (function() {
   // Return constructor
   return function ($, FB) {
     // Private attrs
-    $loginStatus = $('#login-status');
+    var $loginStatus = $('#login-status');
     // Private method
     function octoNemesisUpdate(newStatus) {
       for (type in newStatus) {
@@ -21,11 +21,18 @@ TrippingOctoNemesis = (function() {
         case 'loginStatus':
           var newHtml;
           if (newStatus) {
-            newHtml = 'Logged in';
+            newHtml = '<a href="#" id="auth-logout-link">Log out</a>';
+            $loginStatus.html(newHtml);
+            $('#auth-logout-link').click(function() {
+              FB.logout();
+            });
           } else {
-            newHtml = 'Logged out';
+            newHtml = '<a href="#" id="auth-login-link">Log in</a>';
+            $loginStatus.html(newHtml);
+            $('#auth-login-link').click(function() {
+              FB.login();
+            });
           }
-          $loginStatus.html(newHtml);
           break;
       }
     }
