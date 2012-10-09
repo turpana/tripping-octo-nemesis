@@ -2,16 +2,33 @@
 TrippingOctoNemesis = (function() {
 
   // Private static
-  // var i = 0;
+  var displayStatus = {};
 
   // Private static
-  // function hello () {return "hello";}
-
+        
   // Return constructor
   return function ($, FB) {
     // Private attrs
-    var uid, accessToken, loginStatus;
+    $loginStatus = $('#login-status');
     // Private method
+    function octoNemesisUpdate(newStatus) {
+      for (type in newStatus) {
+        fireUpdate(type, newStatus[type]);
+      }
+    }
+    function fireUpdate(type, newStatus) {
+      switch (type) {
+        case 'loginStatus':
+          var newHtml;
+          if (newStatus) {
+            newHtml = 'Logged in';
+          } else {
+            newHtml = 'Logged out';
+          }
+          $loginStatus.html(newHtml);
+          break;
+      }
+    }
     function loadLoginTrigger() {
       $('#fb-trigger').html('login');
       $('#fb-trigger').click(
@@ -42,15 +59,16 @@ TrippingOctoNemesis = (function() {
       });
     }
 
+    function loadGetAuth() {
+    }
+    function 
+
     // Constructor code
-    FB.getLoginStatus(function(response) {
-      if (response.status === 'connected') {
-        uid = response.authResponse.userID;
-        accessToken = response.authResponse.accessToken;
-        loadApiTrigger();
+    FB.Event.subscribe('auth.statusChange', function (response) {
+      if (response.authResponse) {
+        octoNemesisUpdate({loginStatus: true});
       } else {
-        loginStatus = response.status;
-        loadLoginTrigger();
+        octoNemesisUpdate({loginStatus: false});
       }
     });
   }

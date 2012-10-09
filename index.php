@@ -29,6 +29,6 @@
       }(document));
     </script>
 
-    <a href="#" id="fb-trigger">loading ...</a>
+    <div id="loginStatus"></div>
   </body>
 </html>
