@@ -61,7 +61,6 @@ TrippingOctoNemesis = (function() {
 
     function loadGetAuth() {
     }
-    function 
 
     // Constructor code
     FB.Event.subscribe('auth.statusChange', function (response) {
