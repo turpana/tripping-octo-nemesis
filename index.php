@@ -29,6 +29,6 @@
       }(document));
     </script>
 
-    <div id="loginStatus"></div>
+    <div id="login-status"></div>
   </body>
 </html>
