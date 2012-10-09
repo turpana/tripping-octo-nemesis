@@ -30,5 +30,6 @@
     </script>
 
     <div id="login-status"></div>
+    <div id="fb-api-ui"></div>
   </body>
 </html>

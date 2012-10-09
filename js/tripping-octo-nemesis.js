@@ -10,6 +10,7 @@ TrippingOctoNemesis = (function() {
   return function ($, FB) {
     // Private attrs
     var $loginStatus = $('#login-status');
+    var $fbApiUI = $('#fb-api-ui');
     // Private method
     function octoNemesisUpdate(newStatus) {
       for (type in newStatus) {
@@ -26,6 +27,7 @@ TrippingOctoNemesis = (function() {
             $('#auth-logout-link').click(function() {
               FB.logout();
             });
+            loadApiUI();
           } else {
             newHtml = '<a href="#" id="auth-login-link">Log in</a>';
             $loginStatus.html(newHtml);
@@ -36,42 +38,18 @@ TrippingOctoNemesis = (function() {
           break;
       }
     }
-    function loadLoginTrigger() {
-      $('#fb-trigger').html('login');
-      $('#fb-trigger').click(
-        function() {
-          FB.login(
-            function(response) {
-              if (response.authResponse) {
-                console.log('fetching info ...');
-                FB.api('/me', function (response) {
-                  console.log(response);
-                });
-              } else {
-                console.log('login unsuccessful');
-              }
-            }, 
-            {
-              scope: 'email,user_likes'
-            }
-          );
-        return false;
+    function loadApiUI() {
+      var apiUiHtml = '<ul><li><a href="#" id="fb-api-me">/me</a></li></ul>';
+      $fbApiUI.html(apiUiHtml);
+      $('#fb-api-me').click(function() {
+        FB.api('/me', function (response) {
+          console.log(response);
+        });
       });
-    }
-
-    function loadApiTrigger() {
-      $('#fb-trigger').html('start');
-      $('#fb-trigger').click(function () {
-        FB.api('/me', function(response) {console.info(response);});
-      });
-    }
-
-    function loadGetAuth() {
     }
 
     // Constructor code
     FB.Event.subscribe('auth.statusChange', function (response) {
-      console.info(response);
       if (response.authResponse) {
         octoNemesisUpdate({loginStatus: true});
       } else {
