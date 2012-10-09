@@ -39,12 +39,20 @@ TrippingOctoNemesis = (function() {
       }
     }
     function loadApiUI() {
-      var apiUiHtml = '<ul><li><a href="#" id="fb-api-me">/me</a></li></ul>';
+      var apiUiHtml = '<ul>'
+        + '<li><a href="#" id="fb-api-me">/me</a></li>'
+        + '<li><a href="#" id="fb-api-me-friends">/me/friends</a></li>'
+        + '<li><a href="#" id="fb-api-me-feed">/me/feed</a></li>'
+        + '</ul>';
       $fbApiUI.html(apiUiHtml);
       $('#fb-api-me').click(function() {
-        FB.api('/me', function (response) {
-          console.log(response);
-        });
+        FB.api('/me', function (response) { console.log(response); });
+      });
+      $('#fb-api-me-friends').click(function() {
+        FB.api('/me/friends', function (response) { console.log(response); });
+      });
+      $('#fb-api-me-feed').click(function() {
+        FB.api('/me/feed', function (response) { console.log(response); });
       });
     }
 
