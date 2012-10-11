@@ -82,17 +82,15 @@ TrippingOctoNemesis = (function() {
           var jsonData = {};
           var jitJson = {};
           var i = rawData.length;
+          labels.push('first page of posts');
           while (i) {
             i--;
             if (! (rawData[i].from.id in jsonData) ) {
-              labels.push(rawData[i].from.name);
               jsonData[rawData[i].from.id] = rawData[i].from;
               jsonData[rawData[i].from.id].tally = 0;
             }
             jsonData[rawData[i].from.id].tally += 1;
           }
-          console.info(labels);
-          console.info(jsonData);
           jitJson.label = labels;
           jitJson.values = [];
           for (id in jsonData) {
@@ -103,7 +101,6 @@ TrippingOctoNemesis = (function() {
               }
             );
           }
-          console.info(jitJson);
           var barChart = new $jit.BarChart({
             injectInto: 'infovis',
             animate: true,
