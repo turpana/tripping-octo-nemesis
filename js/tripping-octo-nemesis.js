@@ -99,7 +99,7 @@ TrippingOctoNemesis = (function() {
             jitJson.values.push(
               {
                 label: jsonData[id].name,
-                values: [ 10, 10, jsonData[id].tally ]
+                values: [ jsonData[id].tally ]
               }
             );
           }
@@ -117,27 +117,8 @@ TrippingOctoNemesis = (function() {
             },
             labelOffset: 5,
             type:'stacked',
-            showLabels: false
+            showLabels: true
           });
-          json = {
-            'values': [
-              {
-                'label': 'date A',
-                'values': [10, 40, 15, 7]
-              }, 
-              {
-                'label': 'date B',
-                'values': [30, 40, 45, 9]
-              }, 
-              {
-                'label': 'date D',
-                'values': [55, 30, 34, 26]
-              }, 
-              {
-                'label': 'date C',
-                'values': [26, 40, 85, 28]
-              }]
-            };
 
           barChart.loadJSON(jitJson);
 
