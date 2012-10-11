@@ -49,7 +49,25 @@ TrippingOctoNemesis = (function() {
         FB.api('/me', function (response) { console.log(response); });
       });
       $('#fb-api-me-friends').click(function() {
-        FB.api('/me/friends', function (response) { console.log(response); });
+        FB.api('/me/friends', function (response) { 
+          console.log(response); 
+          var rawData = response.data;
+          var labels = [];
+          var jsonData = {};
+          var i = rawData.length;
+          while (i) {
+            i--;
+            if (! rawData[i].from.id in jsonData ) {
+              labels.push(rawData[i].from.name);
+              jsonData[rawData[i].from.id] = rawData[i].from;
+              jsonData[rawData[i].from.id].tally = 0;
+            }
+            jsonData[rawData[i].from.id].tally += 1;
+          }
+          console.info(labels);
+          console.info(jsonData);
+
+        });
       });
       $('#fb-api-me-feed').click(function() {
         FB.api('/me/feed', function (response) { console.log(response); });

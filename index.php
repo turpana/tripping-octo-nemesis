@@ -31,5 +31,6 @@
 
     <div id="login-status"></div>
     <div id="fb-api-ui"></div>
+    <div id="infovis"></div>
   </body>
 </html>
