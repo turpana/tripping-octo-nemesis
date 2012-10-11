@@ -75,7 +75,7 @@ TrippingOctoNemesis = (function() {
         });
       });
       $('#fb-api-me-home').click(function() {
-        FB.api('/me/home', function (response) { 
+        FB.api('/me/home?limit=200', function (response) { 
           console.log(response); 
           var rawData = response.data;
           var labels = [];
@@ -93,7 +93,7 @@ TrippingOctoNemesis = (function() {
           }
           jitJson.label = labels;
           jitJson.values = [];
-          FB.api('/me/home?offset=25', function (response) {
+          FB.api('/me/home?limit=200&offset=200', function (response) {
             console.info(response);
             var rawData2 = response.data;
             var i = rawData2.length;
