@@ -101,37 +101,39 @@ TrippingOctoNemesis = (function() {
               }
             );
           }
-          var barChart = new $jit.BarChart({
-            injectInto: 'infovis',
-            animate: true,
-            orientation: 'horizontal',
-            barsOffset: 0.5,
-            Margin: {
-              top: 5,
-              right: 5,
-              left: 5,
-              bottom: 5
-            },
-            labelOffset: 5,
-            type:'stacked',
-            showLabels: true,
-            Label: {  
-              type: 'HTML', //Native or HTML  
-              size: 13,  
-              family: 'Arial',  
-              color: 'orange'  
-            },
-            Tips: {  
-              enable: true,  
-              onShow: function(tip, elem) {  
-                tip.innerHTML = "<b>" + elem.name + "</b>: " + elem.value;  
-              } 
-            }
+          FB.api('/me/home?offset=25', function (response) {
+            console.info(response);
+            var barChart = new $jit.BarChart({
+              injectInto: 'infovis',
+              animate: true,
+              orientation: 'horizontal',
+              barsOffset: 0.5,
+              Margin: {
+                top: 5,
+                right: 5,
+                left: 5,
+                bottom: 5
+              },
+              labelOffset: 5,
+              type:'stacked',
+              showLabels: true,
+              Label: {  
+                type: 'HTML', //Native or HTML  
+                size: 13,  
+                family: 'Arial',  
+                color: 'orange'  
+              },
+              Tips: {  
+                enable: true,  
+                onShow: function(tip, elem) {  
+                  tip.innerHTML = "<b>" + elem.name + "</b>: " + elem.value;  
+                } 
+              }
+            });
+
+            barChart.loadJSON(jitJson);
           });
 
-          barChart.loadJSON(jitJson);
-
-          /**/
         });
       });
     }
