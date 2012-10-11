@@ -104,31 +104,22 @@ TrippingOctoNemesis = (function() {
             );
           }
           console.info(jitJson);
-          var pieChart = new $jit.PieChart({
-            injectInto: 'infovis'//,
+          var barChart = new $jit.BarChart({
+            injectInto: 'infovis',
+            animate: true,
+            orientation: 'horizontal',
+            barsOffset: 0.5,
+            Margin: {
+              top: 5,
+              right: 5,
+              left: 5,
+              bottom: 5
+            },
+            labelOffset: 5,
+            type:'stacked',
+            showLabels: false
           });
-          /** /
-            animate: false,
-            offset: 30,  
-            sliceOffset: 0,  
-            labelOffset: 20,
-            type: 'stacked',
-            showLabels:true,
-            resizeLabels: 7,
-            Label: {  
-              type: 'HTML', // Native or HTML  
-              size: 20,  
-              family: 'Arial',  
-              color: 'white'  
-            },  
-            Tips: {  
-              enable: true,  
-              onShow: function(tip, elem) {  
-                tip.innerHTML = "<b>" + elem.name + "</b>: " + elem.value;  
-              }  
-            } 
-          });/**/
-          pieChart.loadJSON(jitJson);
+          barChart.loadJSON(jitJson);
 
           /**/
         });
