@@ -85,11 +85,13 @@ TrippingOctoNemesis = (function() {
           labels.push('first page');
           while (i) {
             i--;
-            if (! (rawData[i].from.id in jsonData) ) {
-              jsonData[rawData[i].from.id] = rawData[i].from;
-              jsonData[rawData[i].from.id].tally = 0;
+            if (null !=  rawData[i].from) {
+              if (! (rawData[i].from.id in jsonData) ) {
+                jsonData[rawData[i].from.id] = rawData[i].from;
+                jsonData[rawData[i].from.id].tally = 0;
+              }
+              jsonData[rawData[i].from.id].tally += 1;
             }
-            jsonData[rawData[i].from.id].tally += 1;
           }
           jitJson.label = labels;
           jitJson.values = [];
