@@ -82,7 +82,7 @@ TrippingOctoNemesis = (function() {
           var jsonData = {};
           var jitJson = {};
           var i = rawData.length;
-          labels.push('first page of posts');
+          labels.push('first page');
           while (i) {
             i--;
             if (! (rawData[i].from.id in jsonData) ) {
@@ -93,16 +93,32 @@ TrippingOctoNemesis = (function() {
           }
           jitJson.label = labels;
           jitJson.values = [];
-          for (id in jsonData) {
-            jitJson.values.push(
-              {
-                label: jsonData[id].name,
-                values: [ jsonData[id].tally ]
-              }
-            );
-          }
           FB.api('/me/home?offset=25', function (response) {
             console.info(response);
+            var rawData2 = response.data;
+            var i = rawData2.length;
+            labels.push('second page');
+            while (i) {
+              i--;
+              if (! (rawData2[i].from.id in jsonData) {
+                jsonData[rawData2[i].from.id] = rawData2[i].from;
+                jsonData[rawData2[i].from.id].tally = 0;
+                jsonData[rawData2[i].from.id].tally2 = 0;
+              }
+              jsonData[rawData2[i].from.id].tally2 += 0;
+            }
+
+            for (id in jsonData) {
+              jsonData[jsonData[id].tally2 = 0;
+            }
+            for (id in jsonData) {
+              jitJson.values.push(
+                {
+                  label: jsonData[id].name,
+                  values: [ jsonData[id].tally, jsonData[id].tally2 ]
+                }
+              );
+            }
             var barChart = new $jit.BarChart({
               injectInto: 'infovis',
               animate: true,
