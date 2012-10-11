@@ -3,6 +3,7 @@
 <html>
   <head>
     <title>Hello</title>
+    <link type="text/css" href="css/infovis.css" rel="stylesheet" >
     <script type="text/javascript" src="js/lib/jquery-1.8.0.min.js"></script>
     <script type="text/javascript" src="js/lib/jit.js"></script>
     <script type="text/javascript" src="js/tripping-octo-nemesis.js"></script>
