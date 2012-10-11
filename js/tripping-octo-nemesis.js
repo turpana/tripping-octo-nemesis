@@ -109,7 +109,7 @@ TrippingOctoNemesis = (function() {
             offset: 30,  
             sliceOffset: 0,  
             labelOffset: 20,
-            type: useGradients? 'stacked:gradient' : 'stacked',
+            type: 'stacked',
             showLabels:true,
             resizeLabels: 7,
             Label: {  
