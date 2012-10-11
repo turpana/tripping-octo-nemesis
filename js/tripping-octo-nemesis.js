@@ -100,7 +100,7 @@ TrippingOctoNemesis = (function() {
             labels.push('second page');
             while (i) {
               i--;
-              if (! (rawData2[i].from.id in jsonData) {
+              if (! (rawData2[i].from.id in jsonData)) {
                 jsonData[rawData2[i].from.id] = rawData2[i].from;
                 jsonData[rawData2[i].from.id].tally = 0;
                 jsonData[rawData2[i].from.id].tally2 = 0;
