@@ -63,7 +63,7 @@ TrippingOctoNemesis = (function() {
           while (i) {
             i--;
             console.info(rawData[i].from.id in jsonData );
-            if (! rawData[i].from.id in jsonData ) {
+            if (! (rawData[i].from.id in jsonData) ) {
               labels.push(rawData[i].from.name);
               jsonData[rawData[i].from.id] = rawData[i].from;
               jsonData[rawData[i].from.id].tally = 0;
