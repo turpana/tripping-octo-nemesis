@@ -98,6 +98,9 @@ TrippingOctoNemesis = (function() {
             var rawData2 = response.data;
             var i = rawData2.length;
             labels.push('second page');
+            for (id in jsonData) {
+              jsonData[id].tally2 = 0;
+            }
             while (i) {
               i--;
               if (! (rawData2[i].from.id in jsonData)) {
@@ -108,9 +111,6 @@ TrippingOctoNemesis = (function() {
               jsonData[rawData2[i].from.id].tally2 += 0;
             }
 
-            for (id in jsonData) {
-              jsonData[id].tally2 = 0;
-            }
             for (id in jsonData) {
               jitJson.values.push(
                 {
