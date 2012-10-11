@@ -51,6 +51,11 @@ TrippingOctoNemesis = (function() {
       $('#fb-api-me-friends').click(function() {
         FB.api('/me/friends', function (response) { 
           console.log(response); 
+        });
+      });
+      $('#fb-api-me-feed').click(function() {
+        FB.api('/me/feed', function (response) { 
+          console.log(response); 
           var rawData = response.data;
           var labels = [];
           var jsonData = {};
@@ -66,11 +71,7 @@ TrippingOctoNemesis = (function() {
           }
           console.info(labels);
           console.info(jsonData);
-
         });
-      });
-      $('#fb-api-me-feed').click(function() {
-        FB.api('/me/feed', function (response) { console.log(response); });
       });
     }
 
