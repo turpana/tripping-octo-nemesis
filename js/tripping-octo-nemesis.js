@@ -139,8 +139,7 @@ TrippingOctoNemesis = (function() {
               }]
             };
 
-          // barChart.loadJSON(jitJson);
-          barChart.loadJSON(json);
+          barChart.loadJSON(jitJson);
 
           /**/
         });
