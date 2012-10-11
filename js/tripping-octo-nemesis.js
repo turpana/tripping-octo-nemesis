@@ -7,7 +7,7 @@ TrippingOctoNemesis = (function() {
   // Private static
         
   // Return constructor
-  return function ($, FB) {
+  return function ($, FB, $jit) {
     // Private attrs
     var $loginStatus = $('#login-status');
     var $fbApiUI = $('#fb-api-ui');
