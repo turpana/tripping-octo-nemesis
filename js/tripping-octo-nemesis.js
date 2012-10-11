@@ -113,7 +113,7 @@ TrippingOctoNemesis = (function() {
             showLabels:true,
             resizeLabels: 7,
             Label: {  
-              type: 'Native', // Native or HTML  
+              type: 'HTML', // Native or HTML  
               size: 20,  
               family: 'Arial',  
               color: 'white'  
