@@ -80,6 +80,7 @@ TrippingOctoNemesis = (function() {
           var rawData = response.data;
           var labels = [];
           var jsonData = {};
+          var jitJson = {};
           var i = rawData.length;
           while (i) {
             i--;
@@ -92,6 +93,40 @@ TrippingOctoNemesis = (function() {
           }
           console.info(labels);
           console.info(jsonData);
+          jit.label = labels;
+          jit.values = [];
+          for (id in jsonData) {
+            jit.values.push(
+              {
+                label: jsonData[id].name,
+                values: [ jsonData[id].tally ]
+              }
+            );
+          }
+          var pieChart = new $jit.PieChart({
+            injectInto: 'infovis',
+            animate: true,
+            offset: 30,  
+            sliceOffset: 0,  
+            labelOffset: 20,
+            type: useGradients? 'stacked:gradient' : 'stacked',
+            showLabels:true,
+            resizeLabels: 7,
+            Label: {  
+              type: labelType, //Native or HTML  
+              size: 20,  
+              family: 'Arial',  
+              color: 'white'  
+            },  
+            Tips: {  
+              enable: true,  
+              onShow: function(tip, elem) {  
+                tip.innerHTML = "<b>" + elem.name + "</b>: " + elem.value;  
+              }  
+            } 
+          });
+          pieChart.loadJSON(jitJson);
+
           /**/
         });
       });
