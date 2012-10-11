@@ -4,6 +4,7 @@
   <head>
     <title>Hello</title>
     <script type="text/javascript" src="js/lib/jquery-1.8.0.min.js"></script>
+    <script type="text/javascript" src="js/lib/jit.js"></script>
     <script type="text/javascript" src="js/tripping-octo-nemesis.js"></script>
   </head>
   <body>
