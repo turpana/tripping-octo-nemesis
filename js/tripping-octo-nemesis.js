@@ -108,7 +108,7 @@ TrippingOctoNemesis = (function() {
                 jsonData[rawData2[i].from.id].tally = 0;
                 jsonData[rawData2[i].from.id].tally2 = 0;
               }
-              jsonData[rawData2[i].from.id].tally2 += 0;
+              jsonData[rawData2[i].from.id].tally2 += 1;
             }
 
             for (id in jsonData) {
