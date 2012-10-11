@@ -105,9 +105,9 @@ TrippingOctoNemesis = (function() {
           }
           console.info(jitJson);
           var pieChart = new $jit.PieChart({
+            injectInto: 'infovis'//,
           });
           /** /
-            injectInto: 'infovis',
             animate: false,
             offset: 30,  
             sliceOffset: 0,  
