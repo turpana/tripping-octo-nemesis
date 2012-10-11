@@ -127,8 +127,9 @@ TrippingOctoNemesis = (function() {
             Tips: {  
               enable: true,  
               onShow: function(tip, elem) {  
-              tip.innerHTML = "<b>" + elem.name + "</b>: " + elem.value;  
-            } 
+                tip.innerHTML = "<b>" + elem.name + "</b>: " + elem.value;  
+              } 
+            }
           });
 
           barChart.loadJSON(jitJson);
