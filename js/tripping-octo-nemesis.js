@@ -119,6 +119,7 @@ TrippingOctoNemesis = (function() {
                 }
               );
             }
+            console.info(jitJson);
             var barChart = new $jit.BarChart({
               injectInto: 'infovis',
               animate: true,
