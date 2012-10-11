@@ -122,7 +122,7 @@ TrippingOctoNemesis = (function() {
               type: 'HTML', //Native or HTML  
               size: 13,  
               family: 'Arial',  
-              color: 'white'  
+              color: 'orange'  
             },
             Tips: {  
               enable: true,  
