@@ -99,7 +99,7 @@ TrippingOctoNemesis = (function() {
             jitJson.values.push(
               {
                 label: jsonData[id].name,
-                values: [ jsonData[id].tally ]
+                values: [ 10, 10, jsonData[id].tally ]
               }
             );
           }
