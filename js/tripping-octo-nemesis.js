@@ -43,6 +43,7 @@ TrippingOctoNemesis = (function() {
         + '<li><a href="#" id="fb-api-me">/me</a></li>'
         + '<li><a href="#" id="fb-api-me-friends">/me/friends</a></li>'
         + '<li><a href="#" id="fb-api-me-feed">/me/feed</a></li>'
+        + '<li><a href="#" id="fb-api-me-home">/me/home</a></li>'
         + '</ul>';
       $fbApiUI.html(apiUiHtml);
       $('#fb-api-me').click(function() {
@@ -62,18 +63,37 @@ TrippingOctoNemesis = (function() {
           var i = rawData.length;
           while (i) {
             i--;
-            console.info(rawData[i].from.id in jsonData );
             if (! (rawData[i].from.id in jsonData) ) {
               labels.push(rawData[i].from.name);
               jsonData[rawData[i].from.id] = rawData[i].from;
               jsonData[rawData[i].from.id].tally = 0;
-              console.info(labels);
-              console.info(jsonData);
             }
             jsonData[rawData[i].from.id].tally += 1;
           }
           console.info(labels);
           console.info(jsonData);
+        });
+      });
+      $('#fb-api-me-home').click(function() {
+        FB.api('/me/home', function (response) { 
+          console.log(response); 
+          /*
+          var rawData = response.data;
+          var labels = [];
+          var jsonData = {};
+          var i = rawData.length;
+          while (i) {
+            i--;
+            if (! (rawData[i].from.id in jsonData) ) {
+              labels.push(rawData[i].from.name);
+              jsonData[rawData[i].from.id] = rawData[i].from;
+              jsonData[rawData[i].from.id].tally = 0;
+            }
+            jsonData[rawData[i].from.id].tally += 1;
+          }
+          console.info(labels);
+          console.info(jsonData);
+          */
         });
       });
     }
