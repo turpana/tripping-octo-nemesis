@@ -93,10 +93,10 @@ TrippingOctoNemesis = (function() {
           }
           console.info(labels);
           console.info(jsonData);
-          jit.label = labels;
-          jit.values = [];
+          jitJson.label = labels;
+          jitJson.values = [];
           for (id in jsonData) {
-            jit.values.push(
+            jitJson.values.push(
               {
                 label: jsonData[id].name,
                 values: [ jsonData[id].tally ]
