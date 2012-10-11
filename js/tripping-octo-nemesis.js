@@ -39,7 +39,12 @@ TrippingOctoNemesis = (function() {
       }
     }
     function loadApiUI() {
+      var dialogUrl = 'https://www.facebook.com/dialog/oauth/'
+        + '?client_id=275683129199939'
+        + '&redirect_uri=http://apps.facebook.com/trip-octo-nemesis/'
+        + '&scope=read_stream';
       var apiUiHtml = '<ul>'
+        + '<li><a href="' + dailogUrl + '" id="fb-api-ui-dialog">dialog</a></li>'
         + '<li><a href="#" id="fb-api-me">/me</a></li>'
         + '<li><a href="#" id="fb-api-me-friends">/me/friends</a></li>'
         + '<li><a href="#" id="fb-api-me-feed">/me/feed</a></li>'
