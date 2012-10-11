@@ -117,7 +117,18 @@ TrippingOctoNemesis = (function() {
             },
             labelOffset: 5,
             type:'stacked',
-            showLabels: true
+            showLabels: true,
+            Label: {  
+              type: 'HTML', //Native or HTML  
+              size: 13,  
+              family: 'Arial',  
+              color: 'white'  
+            },
+            Tips: {  
+              enable: true,  
+              onShow: function(tip, elem) {  
+              tip.innerHTML = "<b>" + elem.name + "</b>: " + elem.value;  
+            } 
           });
 
           barChart.loadJSON(jitJson);
