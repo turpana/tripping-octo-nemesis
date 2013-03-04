@@ -1,3 +1,5 @@
 # ignore external librariess
+underscore*
 jquery*
+backbone*
 paperjs*
